@@ -104,24 +104,50 @@ CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 // }
 // Console.WriteLine(sb.ToString());
 
-string[] products = ["Хлеб", "Молоко", "Ноутбук"];
-double[] prices = [45, 89.5, 65999.99];
+// string[] products = ["Хлеб", "Молоко", "Ноутбук"];
+// double[] prices = [45, 89.5, 65999.99];
 
-const int productWidth = 20;
-const int priceWidth = 8;
+// const int productWidth = 20;
+// const int priceWidth = 8;
 
-Console.WriteLine($"{"№",-2} {"Товар",-productWidth} {"Цена",-priceWidth}");
-        Console.WriteLine(new string('-', 28));
+// Console.WriteLine($"{"№",-2} {"Товар",-productWidth} {"Цена",-priceWidth}");
+//         Console.WriteLine(new string('-', 28));
 
-for (int i = 0; i < products.Length; i++)
-{
+// for (int i = 0; i < products.Length; i++)
+// {
 
-    Console.WriteLine($"{i:D2} {products[i],-productWidth} {prices[i],priceWidth:F2}");
-}
+//     Console.WriteLine($"{i:D2} {products[i],-productWidth} {prices[i],priceWidth:F2}");
+// }
 
-double f = 0.256;
-        Console.WriteLine($"Доля {f} в процентах: {f:P0}");
+// double f = 0.256;
+//         Console.WriteLine($"Доля {f} в процентах: {f:P0}");
 
 
-int num = 255;
-Console.WriteLine($"Число {num} в шестнадцатеричной записи: {num:X}");
+// int num = 255;
+// Console.WriteLine($"Число {num} в шестнадцатеричной записи: {num:X}");
+
+// void Input()
+// {
+//         Console.Write("Input quantity: ");
+//         int quantity = int.Parse(Console.ReadLine());
+
+//         string[] product = new string[quantity];
+//         double[] price = new double[quantity];
+//         int[] quantityProduct = new int[quantity];
+
+//         Console.WriteLine("Input product,price,quantity product:");
+//         for (int i = 0; i < quantity; i++)
+//         {
+//                 string[] item = Console.ReadLine().Split(",");
+//                 if (item.Length == 3 && string.IsNullOrWhiteSpace(item[0]))
+//                 {
+//                         for (int i = 0; i < 3; i++)
+//                         {
+//                                 product[i] = item[0];
+//                                 double priceInDouble;
+//                                 int quantityInInt;
+//                                 bool hasPriceInDouble = double.TryParse()
+//                         }
+//                 }
+//         }
+// }
