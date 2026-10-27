@@ -126,28 +126,73 @@ CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 // int num = 255;
 // Console.WriteLine($"Число {num} в шестнадцатеричной записи: {num:X}");
 
-// void Input()
-// {
-//         Console.Write("Input quantity: ");
-//         int quantity = int.Parse(Console.ReadLine());
 
-//         string[] product = new string[quantity];
-//         double[] price = new double[quantity];
-//         int[] quantityProduct = new int[quantity];
+Console.Write("Input quantity: ");
+int quantity = int.Parse(Console.ReadLine());
 
-//         Console.WriteLine("Input product,price,quantity product:");
-//         for (int i = 0; i < quantity; i++)
-//         {
-//                 string[] item = Console.ReadLine().Split(",");
-//                 if (item.Length == 3 && string.IsNullOrWhiteSpace(item[0]))
-//                 {
-//                         for (int i = 0; i < 3; i++)
-//                         {
-//                                 product[i] = item[0];
-//                                 double priceInDouble;
-//                                 int quantityInInt;
-//                                 bool hasPriceInDouble = double.TryParse()
-//                         }
-//                 }
-//         }
-// }
+string[] product = new string[quantity];
+double[] price = new double[quantity];
+int[] quantityProduct = new int[quantity];
+double[] sumProduct = new double[quantity];
+
+Input(quantity, product, price, quantityProduct);
+Summa(price, quantityProduct, sumProduct, quantity);
+OutputPurchase(product, quantityProduct, price, sumProduct, quantity);
+
+static void Input(int quantity, string[] product, double[] price, int[] quantityProduct)
+{
+    Console.WriteLine("Input product,price,quantity product:");
+    int j = 0;
+    for (int i = 0; i < quantity; i++)
+    {
+        string[] item = Console.ReadLine().Split(",");
+        if (item.Length == 3 && !string.IsNullOrWhiteSpace(item[0]))
+        {
+            product[j] = item[0].Trim();
+            bool hasPriceInDouble = double.TryParse(item[1].Trim(), out price[j]);
+            bool hasQuantityInInt = int.TryParse(item[2].Trim(), out quantityProduct[j]);
+
+        }
+        j++;
+
+    }
+
+}
+
+static void Summa(double[] price, int[] quantityProduct, double[] sumProduct, int quantity)
+
+{
+    for (int i = 0; i < quantity; i++)
+    {
+        sumProduct[i] = price[i] * quantityProduct[i];
+    }
+}
+
+static void OutputPurchase(string[] product, int[] quantityProduct, double[] price, double[] sumProduct, int quantity)
+{
+    var sb = new StringBuilder();
+
+    sb.AppendLine("========== ПОКУПКИ ==========");
+    sb.AppendLine("Товар             Кол-во      Цена      Сумма");
+    sb.AppendLine("---------------------------------------------");
+
+    double total = 0;
+
+    for (int i = 0; i < quantity; i++)
+    {
+        if (string.IsNullOrEmpty(product[i]))
+            continue;
+        sb.AppendFormat("{0,-18}{1,11}{2,10:F2}{3,10:F2}\n",
+            product[i],
+            quantityProduct[i],
+            price[i],
+            sumProduct[i]);
+
+        total += sumProduct[i];
+    }
+
+    sb.AppendLine("---------------------------------------------");
+    sb.AppendFormat("{0,-39}{1,10:F2}\n", "ИТОГО:", total);
+
+    Console.Write(sb.ToString());
+}
